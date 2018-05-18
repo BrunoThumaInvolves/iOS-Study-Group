@@ -26,9 +26,76 @@ class TestObserver: NSObject, XCTestObservation {
 
 
 // Code
+class TestSet: XCTestCase {
 
+    func testAddElement() {
+        let multiset = MultiSet()
+        multiset.add(element: 1)
+        XCTAssertTrue(multiset.contains(element: 1))
+    }
+
+    func testContainsElement() {
+        let multiset = MultiSet()
+        let result = multiset.contains(element: 1)
+        XCTAssertFalse(result)
+    }
+
+    func testCountElements() {
+        //Given
+        let multiset = MultiSet()
+        multiset.add(element: 1)
+        multiset.add(element: 1)
+
+        //When
+        let result = multiset.count(element: 1)
+
+        //Then
+        XCTAssertEqual(result, 2)
+    }
+
+    func testRemoveElement() {
+        //Given
+        let multiset = MultiSet()
+        multiset.add(element: 1)
+
+        //When
+        multiset.remove(element: 1)
+
+        //Then
+        XCTAssertFalse(multiset.contains(element: 1))
+    }
+
+}
+
+class MultiSet {
+
+    private var elements = [Int:Int]()
+
+    func add(element: Int) {
+        var count = elements[element] ?? 0
+        count += 1
+        elements[element] = count
+    }
+
+    func contains(element: Int) -> Bool {
+      return elements[element] != nil
+    }
+
+    func count(element: Int) -> Int {
+        return elements[element] ?? 0
+    }
+
+    func remove(element: Int) {
+        guard var count = elements[element] else {
+            return
+        }
+        count -= 1
+        elements[element] = count
+    }
+
+}
 
 XCTestObservationCenter.shared.addTestObserver(TestObserver())
-// TestClass.defaultTestSuite.run()
+TestSet.defaultTestSuite.run()
 
 //: [Next](@next)

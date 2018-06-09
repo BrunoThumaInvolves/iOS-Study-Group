@@ -10,3 +10,14 @@ import Foundation
 
 print("Hello, World!")
 
+func printDate(date: @autoclosure () -> Date = Date()) {
+    print(date())
+    sleep(4)
+    print(date())
+    sleep(4)
+    print(date())
+    sleep(4)
+    print(date())
+}
+
+printDate()

@@ -12,6 +12,8 @@
 		4F12F0CA20B5756A00B0DA77 /* StudyGroup.h in Headers */ = {isa = PBXBuildFile; fileRef = 4F12F0BC20B5756A00B0DA77 /* StudyGroup.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		4F12F0D320B5759800B0DA77 /* MultisetTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F12F0D220B5759800B0DA77 /* MultisetTests.swift */; };
 		4F12F0D520B575B500B0DA77 /* Multiset.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F12F0D420B575B500B0DA77 /* Multiset.swift */; };
+		4F73BF1120CB0EF90027C8B4 /* WordsGameTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F73BF1020CB0EF90027C8B4 /* WordsGameTests.swift */; };
+		4F73BF1320CB0F990027C8B4 /* WordsGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F73BF1220CB0F990027C8B4 /* WordsGame.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,6 +49,8 @@
 		4F12F0D120B5759700B0DA77 /* StudyGroupTests-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "StudyGroupTests-Bridging-Header.h"; sourceTree = "<group>"; };
 		4F12F0D220B5759800B0DA77 /* MultisetTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultisetTests.swift; sourceTree = "<group>"; };
 		4F12F0D420B575B500B0DA77 /* Multiset.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Multiset.swift; sourceTree = "<group>"; };
+		4F73BF1020CB0EF90027C8B4 /* WordsGameTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordsGameTests.swift; sourceTree = "<group>"; };
+		4F73BF1220CB0F990027C8B4 /* WordsGame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordsGame.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -109,6 +113,7 @@
 				4F12F0BC20B5756A00B0DA77 /* StudyGroup.h */,
 				4F12F0BD20B5756A00B0DA77 /* Info.plist */,
 				4F12F0D420B575B500B0DA77 /* Multiset.swift */,
+				4F73BF1220CB0F990027C8B4 /* WordsGame.swift */,
 			);
 			path = StudyGroup;
 			sourceTree = "<group>";
@@ -119,6 +124,7 @@
 				4F12F0C920B5756A00B0DA77 /* Info.plist */,
 				4F12F0D220B5759800B0DA77 /* MultisetTests.swift */,
 				4F12F0D120B5759700B0DA77 /* StudyGroupTests-Bridging-Header.h */,
+				4F73BF1020CB0EF90027C8B4 /* WordsGameTests.swift */,
 			);
 			path = StudyGroupTests;
 			sourceTree = "<group>";
@@ -263,6 +269,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4F12F0D520B575B500B0DA77 /* Multiset.swift in Sources */,
+				4F73BF1320CB0F990027C8B4 /* WordsGame.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -271,6 +278,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4F12F0D320B5759800B0DA77 /* MultisetTests.swift in Sources */,
+				4F73BF1120CB0EF90027C8B4 /* WordsGameTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

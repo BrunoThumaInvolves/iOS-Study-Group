@@ -10,37 +10,44 @@ import XCTest
 @testable import StudyGroup
 
 class PrintableMock: Printable {
-    var printInvokedCount = 0
-    var printInvokedLastParameters: String? = nil
+    var winInvokedCount = 0
+    var winInvokedLastParameters: String? = nil
+
+    var loseInvokedCount = 0
+    var loseInvokedLastParameters: String? = nil
 
     func win(message: String) {
-        printInvokedCount += 1
-        printInvokedLastParameters = message
+        winInvokedCount += 1
+        winInvokedLastParameters = message
     }
 
     func lose(message: String) {
-
+        loseInvokedCount += 1
+        loseInvokedLastParameters = message
     }
-
 }
 
-class TimerMock: GameTimer {
-    var time = 0
+class TimerMock: TimerProtocol {
+    private var callback: (() -> Void)?
 
-    func tick() -> Int {
-        time += 1
-        return time
+    func register(callback: @escaping () -> Void) {
+        self.callback = callback
+    }
+
+    func tick() {
+        callback!()
     }
 }
 
 class WordsGameTests: XCTestCase {
 
     let printable = PrintableMock()
+    let timer = TimerMock()
     var words = ["Fracasso", "Depressão", "Tristeza"]
 
     func testInputWord() {
         //Given
-        let game = WordsGame(words: words, printable: printable)
+        let game = WordsGame(words: words, printable: printable, timer: timer)
         //When
         let result = game.validate(word: "alegria")
         //Then
@@ -49,7 +56,7 @@ class WordsGameTests: XCTestCase {
 
     func testInputWordExists() {
         //Given
-        let game = WordsGame(words: words, printable: printable)
+        let game = WordsGame(words: words, printable: printable, timer: timer)
         //When
         let result = game.validate(word: "Depressão")
         //Then
@@ -58,7 +65,7 @@ class WordsGameTests: XCTestCase {
 
     func testWinTheGame() {
         //Given
-        let game = WordsGame(words: words, printable: printable)
+        let game = WordsGame(words: words, printable: printable, timer: timer)
 
         //When
         _ = game.validate(word: "Fracasso")
@@ -66,13 +73,21 @@ class WordsGameTests: XCTestCase {
         _ = game.validate(word: "Tristeza")
 
         //Then
-        XCTAssertEqual(printable.printInvokedCount, 1)
-        XCTAssertEqual(printable.printInvokedLastParameters, "OK")
-
+        XCTAssertEqual(printable.winInvokedCount, 1)
+        XCTAssertEqual(printable.winInvokedLastParameters, "OK")
     }
 
     func testLoseGame() {
+        //Given
+        let game = WordsGame(words: words, printable: printable, timer: timer, countdown: 3)
 
+        //When
+        timer.tick()
+        timer.tick()
+        timer.tick()
+
+        //Then
+        XCTAssertEqual(printable.loseInvokedCount, 1)
+        XCTAssertEqual(printable.loseInvokedLastParameters, "Fail")
     }
-
 }
